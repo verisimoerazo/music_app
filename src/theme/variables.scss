@@ -74,7 +74,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /*Variables Personalizadas*/
+--slide-color-background: #528d9f;
+--icon-color: #f5f6f9;
+
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   /*
@@ -233,4 +240,5 @@
 
     --ion-card-background: #1e1e1e;
   }
+  
 }
