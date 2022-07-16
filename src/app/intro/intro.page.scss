@@ -1,0 +1,48 @@
+
+ion-content {
+    --background: rgb(255, 255, 255); 
+  }
+  
+  //ion-button {
+   // --background: rgb(45, 48, 216);
+   // --color: green;
+  //}
+  
+  ion-slides {
+    margin: 20px 20px 20px 20px;
+    height: 100%;
+    background-color: white; //color del contenedor del slide
+    max-width: 800px;
+  }
+  
+  .swiper-slide{
+    display: block;
+    margin-bottom:60px;
+    background-color: var(--slide-color-background);
+  }
+  
+  ion-slide >h1, h2, h3, h4 {             //Titulos dentro de los slides
+    margin: 20px 20px 20px 20px;
+    color: black; // Activad 1 V.E
+    //border-color: red;
+    //border-style: dashed;
+  }
+  
+  ion-slide > p {         //parrafo en los slides
+    font-family: Arial, Helvetica, sans-serif; //Activad 1 V.E
+    font-size: 22px;
+    padding: 20px 20px 20px 20px;
+  }
+  
+  ion-slide > ion-icon {  //icono de los slide
+    color: var(--icon-color); //Actividad 1 V.E
+    font-size: 30px;
+  }
+  
+  ion-slide > ion-icon[name="close-outline"]{ //icono de cerrar X
+    float:right;
+    color: black;
+    font-size: 40px;
+    padding-top: 15px; // Actividad 1 V.E
+  }
+  
