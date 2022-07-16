@@ -1,45 +1,17 @@
+<!-- Actividad 2 V.E -->
 <ion-content>
-
-  <ion-slides pager="true"[options]="slideOpt">
-
-    <ion-slide>
-          <ion-icon name="close-outline"></ion-icon>
-        <h1>Slide 1</h1>
-        <h2>sub titulo</h2>
-        <img src="assets/images/slide1.jpg"/><br><br>
-        <ion-icon name="radio-outline"></ion-icon>
-        <p>Descripcion de esta imagen</p>
-        
-    </ion-slide>
-  
-    <ion-slide>
-      <ion-icon name="close-outline"></ion-icon>
-      <h1>Slide 2</h1>
-      <h2>sub titulo</h2>
-      <img src="assets/images/slide2.jpg"/><br><br>
-      <ion-icon name="radio-outline"></ion-icon>
-      <p>Descripcion de esta imagen</p>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-icon name="close-outline"></ion-icon>
-      <h1>Slide 3</h1>
-      <h2>sub titulo</h2>
-      <img src="assets/images/slide3.jpg"/><br><br>
-      <ion-icon name="radio-outline"></ion-icon>
-      <p>Descripcion de esta imagen</p>
-    </ion-slide>
-
-    <!-- Actividad 1 V.E -->
-    <ion-slide> 
-      <ion-icon name="close-outline"></ion-icon>
-      <h1>Slide 4</h1>
-      <h2>sub titulo</h2>
-      <img src="assets/images/slide4.jpg"/><br><br>
-      <ion-icon name="radio-outline"></ion-icon>
-      <p>Descripcion de esta imagen</p>
-    </ion-slide>
-
-  </ion-slides>
-
-</ion-content>  
+  <ion-slides pager="true" [options]="slideOpt">
+      <ion-slide *ngFor="let slide of slides">
+         <!-- <ion-icon name="close-outline" (click)="finish()"></ion-icon> -->
+         <ion-searchbar placeholder={{slide.placeholder}}></ion-searchbar>
+         <br>
+         <h1>{{slide.title}}</h1> 
+         <br>
+         <img src={{slide.img}}/>
+         <br><br>
+         <ion-icon name={{slide.icon}}></ion-icon>
+        <p>{{slide.description}}</p>
+      </ion-slide>
+     </ion-slides>
+</ion-content>
+<!-- Fin Actividad 2 V.E -->
