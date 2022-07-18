@@ -18,32 +18,32 @@ export class IntroPage implements OnInit{
 
   slides  = [
     {
-      title: "Titulo 1",
-      subtitle: "sub title 1",
+      title: "DAVID GUETTA",  //Actividad 3 V.E
+      subtitle: "Play Hard", //Actividad 3 V.E
       img: "assets/images/slide1.jpg",
       icon: "radio-outline",
       description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
     
     {
-      title: "Titulo 2",
-      subtitle: "sub title 2",
-      img: "assets/images/slide2.jpg",
+      title: "COLDPLAY",  //Actividad 3 V.E
+      subtitle: "Fix You", //Actividad 3 V.E
+      img: "assets/images/slide3.jpg",
       icon: "radio-outline",
       description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
 
     {
-      title: "Titulo 3",
-      subtitle: "sub title 3",
-      img: "assets/images/slide2.jpg",
+      title: "CARLOS VIVES", //Actividad 3 V.E
+      subtitle: "La Cartera", // Activdad 3 V.E
+      img: "assets/images/slide3.jpg",
       icon: "radio-outline",
       description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },
 
     {
-      title: "Titulo 4",
-      subtitle: "sub title 4",
+      title: "DJ TIESTO", //Actividad 3 V.E
+      subtitle: "Tell my why", //Actividad 3 V.E
       img: "assets/images/slide4.jpg",
       icon: "radio-outline",
       description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
@@ -57,12 +57,12 @@ export class IntroPage implements OnInit{
   }
 
   ngOnInit(): void {
-    this.showe().then( x => {
-      // console.log(x);
-      if (x){
-        this.router.navigateByUrl("/home")
-      }
-    })
+    // this.showe().then( x => {
+    //   // console.log(x);
+    //   if (x){
+    //     this.router.navigateByUrl("/home")
+    //   }
+    // })
   }
 
   async showe() {
