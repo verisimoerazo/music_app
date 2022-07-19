@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="ion-text-center">login</ion-title>
+    <ion-title class="ion-text-center text-title">Inicio Sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +8,9 @@
 
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
 
-    <ion-item>
+      <img src="/assets/images/logo_login.jpg" alt="">
+
+    <ion-item style="padding-top: 10px;">
       <ion-label position="floating">Email</ion-label>
       <ion-input formControlName="email"></ion-input>
     </ion-item>
@@ -20,7 +22,9 @@
          loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)
         "
         >
-        {{validation.message}}
+        <div style="padding-top: 14px; margin-bottom: 5px">
+          <ion-badge color="danger">{{validation.message}}</ion-badge><!--Agregado - ACTIVIDAD 3 V.E-->
+        </div>
        </div>
       </ng-container>
     </div>
@@ -38,17 +42,25 @@
           loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)
           "
           >
-          {{validation.message}}
+          <div style="padding-top: 14px; margin-bottom: 5px">
+            <ion-badge color="danger">{{validation.message}}</ion-badge><!--Agregado - ACTIVIDAD 3 V.E-->
+          </div>
        </div>
       </ng-container>
     </div>
-
-    <!--Agregado - Actividad 3 V.E-->
-    <br><br>
-    <div class="center-button">
-     <ion-button class="color-button" center>Ingresar</ion-button>
-    </div>
+   
+    <ion-button class="color-button"
+      expand="full"
+      shape=" round"
+      [disabled]="false"
+      type="submit"
+    >login</ion-button>
 
   </form>
 
+  <div style="padding-top: 14px; margin-bottom: 5px">
+    <ion-badge color="warning">{{errorMessage}}</ion-badge><!--Agregado - ACTIVIDAD 3 V.E-->
+  </div>
+
+  
 </ion-content>

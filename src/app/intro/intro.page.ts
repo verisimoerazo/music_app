@@ -28,7 +28,7 @@ export class IntroPage implements OnInit{
     {
       title: "COLDPLAY",  //Actividad 3 V.E
       subtitle: "Fix You", //Actividad 3 V.E
-      img: "assets/images/slide3.jpg",
+      img: "assets/images/slide2.jpg",
       icon: "radio-outline",
       description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     },

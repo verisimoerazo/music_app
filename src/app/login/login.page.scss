@@ -1,11 +1,29 @@
 
 //Agregado Actividad 3 V.E
 
-  .color-button {
-    --background: rgb(119, 197, 117);
+ion-content{
+  --background: rgb(239, 239, 239); 
+}
+
+.color-button {
+    --background: rgb(17, 173, 66);
 }
 
 .center-button{
     text-align: center;
 }
 
+.img_login{
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+// ion-content {
+//   position: absolute;
+//   top: 50%;
+//   left: 0%;
+//   right: 50%;
+//   margin: 0 auto;
+//   margin-top: 0;
+//   margin-left: 0;
+// }
