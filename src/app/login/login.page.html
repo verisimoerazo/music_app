@@ -52,7 +52,7 @@
     <ion-button class="color-button"
       expand="full"
       shape=" round"
-      [disabled]="false"
+      [disabled]="!loginForm.valid"
       type="submit"
     >login</ion-button>
 
@@ -61,6 +61,15 @@
   <div style="padding-top: 14px; margin-bottom: 5px">
     <ion-badge color="warning">{{errorMessage}}</ion-badge><!--Agregado - ACTIVIDAD 3 V.E-->
   </div>
-
   
 </ion-content>
+
+<ion-footer>
+  <ion-button
+    expand="full"
+    shape=" round"
+    color="primary"
+    (click)="goToRegister()"
+    >Registrate
+  </ion-button>
+</ion-footer>

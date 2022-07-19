@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center text-title">Registrar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+
+    <!-- Inicio Actividad 4 V.E-->
+
+    <img src="/assets/images/logo_register.jpg" alt="">
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.nombre">
+       <div
+        *ngIf="
+        registerForm.get('nombre').hasError(validation.type) && (registerForm.get('nombre').dirty || registerForm.get('nombre').touched)
+        "
+        >
+        <div style="padding-top: 14px; margin-bottom: 5px">
+          <ion-badge color="danger">{{validation.message}}</ion-badge>
+        </div>
+       </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input formControlName="apellido"></ion-input>
+    </ion-item>
+
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.apellido">
+       <div
+        *ngIf="
+        registerForm.get('apellido').hasError(validation.type) && (registerForm.get('apellido').dirty || registerForm.get('apellido').touched)
+        "
+        >
+        <div style="padding-top: 14px; margin-bottom: 5px">
+          <ion-badge color="danger">{{validation.message}}</ion-badge>
+        </div>
+       </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.email">
+       <div
+        *ngIf="
+        registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)
+        "
+        >
+        <div style="padding-top: 14px; margin-bottom: 5px">
+          <ion-badge color="danger">{{validation.message}}</ion-badge>
+        </div>
+       </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.password">
+       <div
+        *ngIf="
+          registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)
+          "
+          >
+          <div style="padding-top: 14px; margin-bottom: 5px">
+            <ion-badge color="danger">{{validation.message}}</ion-badge>
+          </div>
+       </div>
+      </ng-container>
+    </div>
+
+    <ion-button class="color-button"
+      expand="full"
+      shape=" round"
+      type="submit"
+      >Registrar
+    </ion-button>
+
+
+    <!-- Fin Actividad 4 V.E-->
+
+  </form>
+
+</ion-content>
