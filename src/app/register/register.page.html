@@ -1,6 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="ion-text-center text-title">Registrar Usuario</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="danger">
+          <ion-button (click)="goToLogin()">
+          <ion-icon slot="icon-only" ios="arrow-back-circle-outline" md="arrow-back-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center text-title">Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -88,11 +95,11 @@
       </ng-container>
     </div>
 
-    <ion-button class="color-button"
+    <ion-button class="color-button" 
       expand="full"
       shape=" round"
       type="submit"
-      >Registrar
+      >Registrarse
     </ion-button>
 
 

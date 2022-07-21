@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MusicService } from '../services/music.service';
+import { ModalController } from '@ionic/angular';
+import { SongsModalPage } from '../songs-modal/songs-modal.page';
 
 @Component({
   selector: 'app-home',
@@ -8,54 +11,47 @@ import { Component } from '@angular/core';
 
 export class HomePage {
 
-  // Actividad 2 V.E
+  artists: any;
+  artistsFromJson: any;
+  albums: any;
 
-  slideOpt = {
-    initialslide: 0, //slide incial
-    slidesPerView: 1, //slide por vista
-    centeredSlides: true, //que las slides esten centradas
-    speed: 400 //velocida de transicion de cada slide en milisegundo
+  slideOps ={
+    initialSlide: 1,
+    slidesPerView: 3,
+    centeredSlides: true,
+    speed: 400
+
   }
 
-  slides  = [
-    {
-      placeholder: "Buscar artista",
-      title: "Guns and Roses",
-      img: "assets/images/artista1.jpg",
-      icon: "person-outline",
-      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore consectetur atque quidem ratione itaque, ducimus quod natus dicta provident omnis adipisci? Nisi delectus et, laudantium, praesentium tenetur tempore enim quibusdam dignissimos dicta officia nam? Quia similique, incidunt tempore tenetur quos mollitia ea, esse eveniet soluta sunt rerum, voluptatem molestias ullam."
-    },
-    
-    {
-      placeholder: "Buscar artista",
-      title: "Coldplay",
-      img: "assets/images/artista2.jpg",
-      icon: "person-outline",
-      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore consectetur atque quidem ratione itaque, ducimus quod natus dicta provident omnis adipisci? Nisi delectus et, laudantium, praesentium tenetur tempore enim quibusdam dignissimos dicta officia nam? Quia similique, incidunt tempore tenetur quos mollitia ea, esse eveniet soluta sunt rerum, voluptatem molestias ullam."
-    },
+  constructor(private musicService: MusicService, private modalController: ModalController) {}
 
-    {
-      placeholder: "Buscar artista",
-      title: "Michael Jackson",
-      img: "assets/images/artista3.jpg",
-      icon: "person-outline",
-      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore consectetur atque quidem ratione itaque, ducimus quod natus dicta provident omnis adipisci? Nisi delectus et, laudantium, praesentium tenetur tempore enim quibusdam dignissimos dicta officia nam? Quia similique, incidunt tempore tenetur quos mollitia ea, esse eveniet soluta sunt rerum, voluptatem molestias ullam."
-    },
+  ionViewDidEnter() {
+    //Lista de artistas desde api
+    this.musicService.getArtists().then(listArtists => {
+      this.artists = listArtists.artists;
+      // console.log(this.artists)
+    });
+    // lista de artistas desde apijson 
+    this.artistsFromJson = this.musicService.getArtistsFromJson();
+    //console.log(this.artistsFromJson.artists);
 
-    {
-      
-      title: "Freddy Mercury",
-      img: "assets/images/artista4.jpg",
-      icon: "person-outline",
-      description:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore consectetur atque quidem ratione itaque, ducimus quod natus dicta provident omnis adipisci? Nisi delectus et, laudantium, praesentium tenetur tempore enim quibusdam dignissimos dicta officia nam? Quia similique, incidunt tempore tenetur quos mollitia ea, esse eveniet soluta sunt rerum, voluptatem molestias ullam."
-    }
-    
-  ]
+    //albums desde api
+    this.musicService.getAlbums().then(listAlbums => {
+      this.albums = listAlbums.albums;
+      // console.log("get albums", this.albums);
+    })
+  }
 
-  // Fin Actividad 2 V.E
-
-  constructor() {
-
+  async showSongs(artist){
+    const songs = await this.musicService.getArtistsTracks(artist.id);
+    const modal = await this.modalController.create({
+      component: SongsModalPage,
+      componentProps: {
+        songs: songs,
+        artist: artist.name
+      }
+    });
+    modal.present();
   }
 
 }

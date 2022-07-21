@@ -1,3 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <h1>Hola Soy el Home</h1>
+  
+  <h1>Artistas</h1>
+ 
+  <ion-slides [options]="slideOps">
+
+    <ion-slide *ngFor="let artist of artists">
+      <ion-avatar (click)="showSongs(artist)">
+        <img src={{artist.images[2].url}}/>
+        <span>{{artist.name}}</span>
+      </ion-avatar>
+    </ion-slide>
+  </ion-slides>
+
+
+    <h1>Albums</h1>
+
+    <ion-slides [options]="slideOps">
+
+      <ion-slide *ngFor="let album of albums">
+        <ion-avatar class="square-avatar">
+          <img src={{album.images[2].url}}/>
+          <span>{{album.name}}</span>
+        </ion-avatar>
+      </ion-slide>
+
+  </ion-slides>
 </ion-content>
