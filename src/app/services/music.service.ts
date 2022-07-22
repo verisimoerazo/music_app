@@ -6,7 +6,7 @@ import * as dataArtists from "./artists.json";
 })
 export class MusicService {
 
-  header = {'Access-Control-Request-Headers': '*', 'Authorization': 'Bearer BQCrXN6zvDZE0tl29p9lYn9didm7CjN1VX3EJ_Y7JkZBbzy3ntZXOi9ZAMOoRokvm78V9KRrxMgM7kOf2ajlJHgSNFxWuIuKDuC7eHUHlnaFcRkdmxtRdyaqi6G5yfqSi7qlTopXEocVAJLw6gyfwsNqZ--b-nEAfDztu9W5i7wMkYmiO6-9srwfdLsRiInqe9g'};
+  header = {'Access-Control-Request-Headers': '*', 'Authorization': 'Bearer BQBVm9DUlJg5kVmMfw6trp4wow3GbdgrARXG64jueSZof2VXrlX6yJWc0CUsQ07I3rgfGgelw5n9m4QqPLRqZQoxBtVkrrd3J7j6_4lV593GHUGWUnRhIiZ-Qxf7XROFW2rAwYViKie-XOpbRO2CPO6SjVeLM_5pqBxw4zMYslBi259dp4uW4oAroPla0b6NB-4'};
   // url_server = "https://music-back-seminario.herokuapp.com/"; 
 
   constructor() { }
@@ -16,6 +16,16 @@ export class MusicService {
       (artists) => artists.json()
     );
   }
+
+  // Inicio de Actividad 6 V.E
+
+  getEpisodes(){
+    return fetch("https://api.spotify.com/v1/episodes?ids=512ojhOuo1ktJprKbVcKyQ", { mode: 'cors' , headers: this.header} ).then(
+      (episodes) => episodes.json()
+    );
+  }
+
+  // Fin de Actividad 6 V.E
 
   getArtistsFromJson(){
     return dataArtists;

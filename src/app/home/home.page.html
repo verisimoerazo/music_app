@@ -30,6 +30,23 @@
           <span>{{album.name}}</span>
         </ion-avatar>
       </ion-slide>
-
   </ion-slides>
+
+  <!-- Inicio de Actividad 6 -->
+
+  <h1>Episodes</h1>
+
+  <ion-slides [options]="slideOps">
+
+    <ion-slide *ngFor="let episode of episodes">
+      <ion-avatar class="square-avatar">
+        <img src={{episode.images[2].url}}/>
+        <br>
+        <span>{{episode.description}}</span>
+      </ion-avatar>
+    </ion-slide>
+</ion-slides>
+
+<!-- Fin de Actividad 6 -->
+
 </ion-content>
