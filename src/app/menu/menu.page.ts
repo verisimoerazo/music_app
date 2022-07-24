@@ -30,6 +30,21 @@ export class MenuPage implements OnInit {
    
   }
 
+  goToHome(){
+    this.navCtrl.navigateRoot("menu");
+    this.menu.close();
+  }
+
+  goToSettings() {
+    this.navCtrl.navigateRoot("menu/settings");
+    this.menu.close();
+  }
+
+  goToMaps() {
+    this.navCtrl.navigateRoot("menu/maps");
+    this.menu.close();
+  }
+
 
 
 }

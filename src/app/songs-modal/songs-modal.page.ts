@@ -10,6 +10,7 @@ import { modalController } from '@ionic/core';
 export class SongsModalPage implements OnInit {
 
   artist: string;
+  songs: any;
 
   constructor(private navParams: NavParams, private modalController: ModalController) { }
 
@@ -18,10 +19,15 @@ export class SongsModalPage implements OnInit {
 
   ionViewDidEnter(){
     this.artist = this.navParams.data.artist;
+    this.songs = this.navParams.data.songs;
   }
 
   closemodal(){
     this.modalController.dismiss()
+  }
+
+  async selectSong(song) {
+    await this.modalController.dismiss(song)
   }
 
 }

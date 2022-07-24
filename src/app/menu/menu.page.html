@@ -7,27 +7,33 @@
         </ion-title>
         <ion-buttons slot="start">
           <ion-button (click)="closeMenu()">
-            <ion-icon name="close-circle-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
           </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item><ion-icon name="mail-outline"></ion-icon>Funcion 2</ion-item>
-        <ion-item>Funcion 3</ion-item>
-        <ion-item>Funcion 4</ion-item>
-        <ion-item>Funcion 5</ion-item>
-        <ion-item>Funcion 6</ion-item>
-        <ion-item>Funcion 7</ion-item>
-      </ion-list>
-      <ion-footer>
-        <ion-item (click)="logout()">
-          <ion-icon name="log-out-outline"></ion-icon>
-          Cerrar sesión
+        <ion-item (click)="goToHome()">
+          <ion-icon name="home-outline"></ion-icon>
+          &nbsp;&nbsp;Inicio
         </ion-item>
-      </ion-footer>
+        <ion-item (click)="goToMaps()">
+          <ion-icon name="map-outline"></ion-icon>  
+          &nbsp;&nbsp;Mapa
+        </ion-item>
+        <ion-item (click)="goToSettings()">
+          <ion-icon name="settings-outline"></ion-icon>  
+          &nbsp;&nbsp;Configuracion
+          </ion-item>
+      </ion-list>
     </ion-content>
+    <ion-footer>
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        &nbsp;&nbsp;Cerrar sesión
+      </ion-item>
+    </ion-footer>
   </ion-menu>
   <ion-router-outlet id="content" main></ion-router-outlet>
 </ion-split-pane>
