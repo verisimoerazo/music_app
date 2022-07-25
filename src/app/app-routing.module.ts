@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'album-modal',
     loadChildren: () => import('./album-modal/album-modal.module').then( m => m.AlbumModalPageModule)
+  },  {
+    path: 'search-modal',
+    loadChildren: () => import('./search-modal/search-modal.module').then( m => m.SearchModalPageModule)
   }
+
 
 
 
