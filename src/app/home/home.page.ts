@@ -79,9 +79,10 @@ export class HomePage {
     return await modal.present();
   }
 
+  // Inicio de Actividad 7 Nota Individual
+
   async showAlbums(album){
     const albums = await this.musicService.getAlbumsTracks(album.id);
-    console.log(albums)
     const modal = await this.modalController.create({
       component: AlbumModalPage,
       componentProps: {
@@ -90,10 +91,12 @@ export class HomePage {
       }
     });
     modal.onDidDismiss().then( dataReturned =>{
-      this.albums = dataReturned.data
+      this.song = dataReturned.data
     })
     return await modal.present();
   }
+
+    // fin de Actividad 7 Nota Individual
 
   play() {
     this.currentSong = new Audio(this.song.preview_url)

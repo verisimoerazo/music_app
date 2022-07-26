@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { AuthenticateService } from '../services/authenticate.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,8 @@ import { AuthenticateService } from '../services/authenticate.service';
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   registerResult: boolean = true;
+  errMessage;
+
   validation_messages = {
     name: [
       { type: "required", message: "El nombre es obligatorio" },
@@ -37,12 +40,14 @@ export class RegisterPage implements OnInit {
 
 
   };
-
+  
   constructor(
+    private alertController: AlertController,
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
     private storage: Storage,
     private authService: AuthenticateService
+
   ) { 
 
     // Inicio Actividad 4 V.E
@@ -85,14 +90,23 @@ export class RegisterPage implements OnInit {
   }
 
   register(registerFormValues) {
-    this.authService.registerUser(registerFormValues).subscribe( (data: any) => {
-      console.log("usurio creado", data)
-      if (data.id == null){
-        "no se hizo login"
-      }else{
-        this.navCtrl.navigateBack("/login")
-      }
+    this.authService.registerUser(registerFormValues).then( (data) => {
+      console.log("usuario creado", data);
+      this.errMessage = "";
+       this.navCtrl.navigateBack("/login");
+    }).catch( err => {
+      this.presentAlert("Opps", "Hubo un error", err)
     })
+  }
+
+  async presentAlert(header, subHeader, message) {
+    const alert = await this.alertController.create({
+      header: header,
+      subHeader: subHeader,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
   goToLogin(){

@@ -17,6 +17,8 @@ export class AlbumModalPage implements OnInit {
   ngOnInit() {
   }
 
+// Inicio de Actividad 7 Nota Individual
+
   ionViewDidEnter(){
     this.album = this.navParams.data.album;
   }
@@ -28,5 +30,7 @@ export class AlbumModalPage implements OnInit {
   async selectAlbum(album) {
     await this.modalController.dismiss(album)
   }
+
+  // Fin de Actividad 7 Nota Individual
 
 }
