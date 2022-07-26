@@ -139,4 +139,23 @@ export class SettingsPage implements OnInit {
       })
     } ) 
   }
+
+
+  //Actividad Clase 13 25-07-2022
+  unfollowUser(followee_id){
+
+    this.userService.unfollowUser(followee_id, this.user_id).subscribe( async (resp: any) => {
+       this.presentAlert("UnFollow","",resp.msg)
+       this.users.forEach( user  => {
+         if (followee_id == user.id){
+           user["follow"] = false
+           let newFolleew = parseInt(document.getElementById("followee").textContent) - 1
+           document.getElementById("followee").textContent = newFolleew.toString();
+         }
+       })
+     } ) 
+   }
+
+     //Fin Actividad Clase 13 25-07-2022
+
 }

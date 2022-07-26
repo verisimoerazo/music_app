@@ -49,6 +49,9 @@
       <ion-button (click)="followUser(user.id)" *ngIf="!user.follow">
         <ion-icon name="person-add-outline"></ion-icon>
       </ion-button>
+      <ion-button (click)="unfollowUser(user.id)" *ngIf="user.follow"> <!-- Actividad Clase 13 25-07-2022 -->
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button> <!-- Fin Actividad Clase 13 25-07-2022 -->
     </ion-buttons>
   </ion-item>
   </ion-virtual-scroll>

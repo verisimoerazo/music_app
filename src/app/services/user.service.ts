@@ -53,4 +53,15 @@ export class UserService {
     return this.http.post(`${this.url_server}follow/${user_id}`, params, this.httpOptions)
   }
 
+  // Actividad Clase 13 25-07-2022
+
+  unfollowUser(followee_id, user_id) {
+    let params = {
+      "followee_id": followee_id
+    }
+    return this.http.post(`${this.url_server}unfollow/${user_id}`, params, this.httpOptions)
+  }
+
+  // Fin Actividad Clase 13 25-07-2022
+
 }
