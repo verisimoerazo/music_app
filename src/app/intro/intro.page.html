@@ -1,12 +1,12 @@
 <ion-content>
   <ion-slides pager="true" [options]="slideOpt">
       <ion-slide *ngFor="let slide of slides">
-        <ion-icon name="close-outline" (click)="finish()"></ion-icon>
-         <h1>{{slide.title}}</h1>
+        <ion-icon name="close-circle-outline" (click)="finish()"></ion-icon>
+        <h1>{{slide.title}}</h1>
+        <img src={{slide.img}}/>
          <h2>{{slide.subtitle}}</h2>
-         <img src={{slide.img}}/>
-         <br><br>
-         <ion-icon name={{slide.icon}}></ion-icon>
+         <hr>
+         <!-- <ion-icon name={{slide.icon}}></ion-icon> -->
         <p>{{slide.description}}</p>
       </ion-slide>
   </ion-slides>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
-import { Storage } from "@ionic/storage";
+import { Storage } from '@capacitor/storage';
 
 @Component({
   selector: 'app-login',
@@ -34,10 +34,9 @@ export class LoginPage implements OnInit {
      private alertController: AlertController,
      private formBuilder: FormBuilder,
      private authService: AuthenticateService, 
-     private navCtrl: NavController,
-     private storage: Storage) {
+     private navCtrl: NavController) {
 
-      this.storage.create();
+      // this.storage.create();
 
       this.loginForm = this.formBuilder.group({
       email: new FormControl(
@@ -53,7 +52,7 @@ export class LoginPage implements OnInit {
         "",
           Validators.compose([
           Validators.required,
-          Validators.maxLength(8),// Agregado - Actividad 3 V.E
+          Validators.maxLength(20),// Agregado - Actividad 3 V.E
           Validators.minLength(4)
         ])  
       ),
@@ -64,18 +63,18 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   
-  loginUser(credentials){
-    console.log(credentials);
-    this.authService.loginUser(credentials).then( res  => {
-      this.errorMessage = "";
-      this.storage.set("isUserLoggedIn", true)
+  loginUser(credentials) {
+    this.authService.loginUser(credentials).then( (res: any) => {
+      console.log("res: ", res)
+      Storage.set({key: "isUserLoggedIn", value: 'true'})
+      console.log("conversion id a string",(res.user.id).toString())
+      console.log("id como number",res.user.id)
+      Storage.set({key: "user_id", value: (res.user.id).toString()})
       this.navCtrl.navigateForward("/menu");
     }).catch( err => {
-      // this.presentAlert("Opps", "Hubo un error", err)
-      this.errorMessage = err;
+      this.presentAlert("Opps", "Hubo un error", err)
     })
   }
-
   async presentAlert(header, subHeader, message) {
     const alert = await this.alertController.create({
       header: header,

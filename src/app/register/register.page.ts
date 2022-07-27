@@ -2,7 +2,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
+import { Storage } from '@capacitor/storage';
 import { AuthenticateService } from '../services/authenticate.service';
 import { AlertController } from '@ionic/angular';
 
@@ -45,7 +45,6 @@ export class RegisterPage implements OnInit {
     private alertController: AlertController,
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
-    private storage: Storage,
     private authService: AuthenticateService
 
   ) { 
@@ -76,7 +75,7 @@ export class RegisterPage implements OnInit {
           "",
           Validators.compose([
           Validators.required,
-          Validators.maxLength(8),
+          Validators.maxLength(20),
           Validators.minLength(4)
         ])
       )

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { Storage } from '@capacitor/storage';
 import { HttpClient, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -11,8 +11,8 @@ export class AuthenticateService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', observe: 'response' })
   };
-  constructor(private storage: Storage, private http: HttpClient) { 
-    this.storage.create();
+  constructor(private http: HttpClient) { 
+    // this.storage.create();
   }
 
   loginUser(credentials) {
@@ -23,6 +23,7 @@ export class AuthenticateService {
       this.http.post(`${this.url_server}login`, params, this.httpOptions)
       .subscribe((data: any) => {
         if ( data.status == "OK") {
+          console.log("aqui la data", data)
           accept(data);
         } else {
           reject("Email o Contraseña Invalida");
@@ -36,7 +37,8 @@ export class AuthenticateService {
   }
 
   registerUser(userData) {
-    //userData.password = btoa(userData.password);
+    //userData.password = btoa(userData.password); // Encrypt Password
+    //userData.password = atob(userData.password); //Actividad 5 V.E Descrypt Password
     //return this.storage.set("user", userData)
     let params = {
       "user": userData
@@ -56,48 +58,5 @@ export class AuthenticateService {
       });
   }
 
-  // getCurrentUser(id) {
-  //   return this.http.get(`${this.url_server}current_user/${id}`, this.httpOptions)
-  // }
-
-  // updateUser(id, user) {
-  //   let params = {
-  //     "user": user
-  //   }
-  //   return new Promise ((accept, reject) => {
-  //   this.http.post(`${this.url_server}update/${id}`, params, this.httpOptions)
-  //   .subscribe((data: any) =>{
-  //     if (data.status = "OK"){
-  //       accept(data)
-  //     }else{
-  //       reject(data.errors)
-  //     }
-  //   }, 
-  //   (error) => {
-  //     reject(error)
-  //   }
-  //   )
-  // })
-  // }
-
-  // update(id, user) {
-  //   let params = {
-  //     "user": user
-  //   }
-  //   return new Promise ((accept, reject) => {
-  //   this.http.post(`${this.url_server}update/${id}`, params, this.httpOptions)
-  //   .subscribe((data: any) =>{
-  //     if (data.status = "OK"){
-  //       accept(data)
-  //     }else{
-  //       reject(data.errors)
-  //     }
-  //   }, 
-  //   (error) => {
-  //     reject(error)
-  //   }
-  //   )
-  // })
-  // }
 
 }
